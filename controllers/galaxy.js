@@ -71,11 +71,15 @@ const create = async (req, res) => {
   }
   try {
     const newGalaxy = await Galaxies.create({ name, size, description });
-    return res.status(201).json({
+    return res.redirect("/galaxies")
+    
+    /*
+     We coluld also opt for a more verbose feedback sending a json instead of the redirect
+      .status(201).json({
       success: true,
       message: `${item} created`,
       data: newGalaxy
-    });
+    });*/
   } catch (error) {
     return res.status(500).send({
       success: false,
